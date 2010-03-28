@@ -60,8 +60,23 @@ if __name__ == "__main__":
 
             f.close()
 
-            for component in vobject.readComponents(contents):
-                combinedCalendar.add(component)
+            components = vobject.readComponents(contents, validate=True)
+
+            for component in components:
+                for child in component.getChildren():
+
+                    add_entry = True
+
+                    if child.name == 'VERSION':
+                        add_entry = False
+
+                    if child.name == 'PRODID':
+                        add_entry = False
+
+                    if add_entry:
+                        combinedCalendar.add(child)
+            
+                
 
         # Write iCal file
         print "Writing iCalendar file '%s'.." % options.icalfile
