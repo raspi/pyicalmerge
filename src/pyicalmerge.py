@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 # Combine iCalendar files
 # $Id$
-# uses http://pypi.python.org/pypi/icalendar/2.1
+# uses http://vobject.skyhouseconsulting.com/
 
 import os
 import sys
